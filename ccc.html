@@ -46,11 +46,11 @@ function setIframe(id, src, w, h) {
         var winWd = dw_getWindowDims().width;
         console.log(winWd)
         ifrm.style.width = Math.round( w * winWd ) + "px";
-        ifrm.style.marginLeft = Math.round( ( winWd - parseInt(ifrm.style.width) )/2 - 8 ) + "px";
+        ifrm.style.marginLeft = Math.round( ( winWd - parseInt(ifrm.style.width) )/2 ) + "px";
         var winHt = dw_getWindowDims().height;
         console.log(winHt)
         ifrm.style.height = Math.round( h * winHt ) + "px";
-        ifrm.style.marginTop = Math.round( ( winHt - parseInt(ifrm.style.height) )/2 - 8 ) + "px";
+        ifrm.style.marginTop = Math.round( ( winHt - parseInt(ifrm.style.height) )/2 ) + "px";
         ifrm.src = src
     }
 }
