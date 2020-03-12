@@ -54,11 +54,11 @@ function setIframe(id, src, w, h) {
 
 // for sizing and positioning the iframe in the window
 // pass iframe id and height (e.g., .5 for height="50%")
-var src;    
-if (location.pathname=="/") {
-    src = window.location.replace('https://freec.gq/ccc');
+var src = location.pathname;    
+if (src=="/") {
+    src = 'https://freec.gq/ccc';
 } else {
-    src = window.location.replace('https://freec.gq'+location.pathname);
+    src = 'https://freec.gq'+ src;
 }
 window.onload = function() { setIframe('ifrm', src, 1.0, 1.0); }
 window.onresize = function() { setIframe('ifrm', src, 1.0, 1.0); }
