@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<title>Demo</title>
+<style type="text/css">
+body { 
+    font: 14px/1.3 verdana, arial, helvetica, sans-serif; 
+    text-align:center; /* for old ie */
+    }
+iframe#ifrm { 
+    width:80%;
+    margin: auto;
+    border:1px solid #d0d0d0;
+    }
+a:link { color:#33c; }    
+a:visited { color:#339; }    
+</style>
+<script type="text/javascript">
+function dw_getWindowDims() {
+    var doc = document, w = window;
+    var docEl = (doc.compatMode && doc.compatMode === 'CSS1Compat')? doc.documentElement: doc.body;
+    
+    var width = docEl.clientWidth;
+    var height = docEl.clientHeight;
+    
+    // mobile zoomed in?
+    if ( w.innerWidth && width > w.innerWidth ) {
+        width = w.innerWidth;
+        height = w.innerHeight;
+    }
+    
+    return {width: width, height: height};
+}
+
+// arguments: iframe id, height  (e.g., .5 for height="50%")
+function setIframe(id, src, w, h) {
+    var ifrm = document.getElementById(id);
+    if (ifrm) {
+        var winWd = dw_getWindowDims().width;
+        console.log(winWd)
+        ifrm.style.width = Math.round( w * winWd ) + "px";
+        ifrm.style.marginLeft = Math.round( ( winWd - parseInt(ifrm.style.width) )/2 ) + "px";
+        var winHt = dw_getWindowDims().height;
+        console.log(winHt)
+        ifrm.style.height = Math.round( h * winHt ) + "px";
+        ifrm.style.marginTop = Math.round( ( winHt - parseInt(ifrm.style.height) )/2 ) + "px";
+        ifrm.src = src
+    }
+}
+
+function get(name){
+  const parts = window.location.href.split('?');
+  if (parts.length > 1) {
+    name = encodeURIComponent(name);
+    const params = parts[1].split('&');
+    const found = params.filter(el => (el.split('=')[0] === name) && el);
+    if (found.length) return decodeURIComponent(found[0].split('=')[1]);
+  }
+}
+
+// for sizing and positioning the iframe in the window
+// pass iframe id and height (e.g., .5 for height="50%")
+var src = get("url")
+window.onload = function() { setIframe('ifrm', src, 1.0, 1.0); }
+window.onresize = function() { setIframe('ifrm', src, 1.0, 1.0); }
+
+</script>
+</head>
+<body>
+    <div class="container-fluid prompt" style="padding: 0">
+        <iframe id="ifrm" src="">请换一个浏览器或者启用Java script</iframe>
+    </dev>
+</body>
+</html>
